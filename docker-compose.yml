@@ -1,17 +1,30 @@
 version: '3.8'
 
+
 services:
-  app:
-    container_name: api-beer
+
+  db:
+    image: mysql:latest
+    container_name: db-beers
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'beer'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+
+  api:
+    image: python:latest
+    container_name: api-beers
     build: ./api
     depends_on:
       - db
     ports:
-      - '8080:80'
+      - '81:5000'
+    restart: unless-stopped
 
 
 
-  db:
 
 
 
