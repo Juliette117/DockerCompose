@@ -4,8 +4,8 @@ version: '3.8'
 services:
 
   db:
-    image: mysql:latest
     container_name: db-beers
+    build: ./sql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
@@ -14,7 +14,6 @@ services:
       MYSQL_PASSWORD: 'test'
 
   api:
-    image: python:latest
     container_name: api-beers
     build: ./api
     depends_on:
@@ -23,8 +22,7 @@ services:
       - '81:5000'
     restart: unless-stopped
 
-volumes:
-  db-volume:
+
 
 
 
