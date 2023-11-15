@@ -14,4 +14,5 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # Commande à exécuter au démarrage du conteneur
-CMD ["flask", "run", "--host=[0.0.0.0]"]
+CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]
+
